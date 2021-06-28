@@ -22,8 +22,8 @@ public class MoveTo extends ADecorator {
     }
 
     @Override
-    public ICurve getCopy() {
-        ICurve componentCopy = getComponent().getCopy();
+    public ICurve clone() {
+        ICurve componentCopy = getComponent().clone();
 
         return new MoveTo(componentCopy, this.shift);
     }

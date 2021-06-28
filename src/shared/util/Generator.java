@@ -6,8 +6,6 @@ import geometry.impl.Bezier;
 import geometry.impl.Line;
 import geometry.impl.Point;
 import visual.VisualCurve;
-import visual.impl.VisualBezier;
-import visual.impl.VisualLine;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +40,9 @@ public class Generator implements IGenerator {
         int curveType = getCurveType();
 
         if (curveType == 0) {
-            return new VisualLine(getRandomLine(beginX, beginY, areaWidth, areaHeight));
+            return new VisualCurve(getRandomLine(beginX, beginY, areaWidth, areaHeight));
         } else {
-            return new VisualBezier(getRandomBezier(beginX, beginY, areaWidth, areaHeight));
+            return new VisualCurve(getRandomBezier(beginX, beginY, areaWidth, areaHeight));
         }
     }
 

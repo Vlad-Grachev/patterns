@@ -24,7 +24,7 @@ public class Line extends ACurve {
     }
 
     @Override
-    public ICurve getCopy() {
+    public ICurve clone() {
         IPoint aCopy = new Point(a.getX(), a.getY());
         IPoint bCopy = new Point(b.getX(), b.getY());
         return new Line(aCopy, bCopy);

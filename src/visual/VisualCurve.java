@@ -1,15 +1,15 @@
 package visual;
 
-import geometry.ACurve;
 import geometry.ICurve;
 import geometry.IPoint;
 import shared.Config;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public abstract class VisualCurve implements ICurve, IDrawable {
+public class VisualCurve implements ICurve, IDrawable {
     protected ICurve curve;
+
+    public VisualCurve(ICurve curve) {
+        this.curve = curve;
+    }
 
     @Override
     public void draw(IDrawer drawingContext) {
@@ -25,13 +25,16 @@ public abstract class VisualCurve implements ICurve, IDrawable {
         }
 
         drawingContext.drawLastPoint(getPoint(t));
-
-        List<IPoint> points = new ArrayList<>();
     }
 
     @Override
-    public ICurve getCopy() {
-        return null;
+    public IPoint getPoint(double t) {
+        return curve.getPoint(t);
+    }
+
+    @Override
+    public ICurve clone() {
+        return new VisualCurve(this.curve.clone());
     }
 
     public ICurve getCurve() {

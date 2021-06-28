@@ -14,7 +14,7 @@ public abstract class ADecorator implements ICurve {
     public abstract IPoint getPoint(double t);
 
     @Override
-    public abstract ICurve getCopy();
+    public abstract ICurve clone();
 
     public ICurve getComponent() {
         return component;

@@ -7,10 +7,7 @@ import geometry.impl.Point;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Chain implements ICurve {
@@ -18,12 +15,18 @@ public class Chain implements ICurve {
 
     public Chain(ICurve... curves) {
         this.curves = new ArrayList<>();
-        this.curves.addAll(Arrays.asList(curves));
+
+        if (curves != null) {
+            Arrays.asList(curves).forEach(this::add);
+        }
     }
 
-    public Chain(Collection<ICurve> curves) {
+    public Chain(List<ICurve> curves) {
         this.curves = new ArrayList<>();
-        this.curves.addAll(curves);
+
+        if (curves != null) {
+            curves.forEach(this::add);
+        }
     }
 
     public void add(ICurve curve) {
@@ -64,10 +67,10 @@ public class Chain implements ICurve {
     }
 
     @Override
-    public ICurve getCopy() {
+    public ICurve clone() {
         return new Chain(
                 curves.stream()
-                    .map(ICurve::getCopy)
+                    .map(ICurve::clone)
                     .collect(Collectors.toList()));
     }
 }

@@ -19,8 +19,8 @@ public class Fragment extends ADecorator {
     }
 
     @Override
-    public ICurve getCopy() {
-        ICurve componentCopy = getComponent().getCopy();
+    public ICurve clone() {
+        ICurve componentCopy = getComponent().clone();
         return new Fragment(componentCopy, this.tStart, this.tFinish);
     }
 

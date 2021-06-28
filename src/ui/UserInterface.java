@@ -114,12 +114,12 @@ public class UserInterface extends JFrame {
             }
         });
 
-        JButton compositButton = new JButton("Composit");
-        joinButton.setSize(80, 190);
-        joinButton.addActionListener(new ActionListener() {
+        JButton compositeButton = new JButton("Composite");
+        compositeButton.setSize(80, 190);
+        compositeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                createComposit();
+                createComposite();
                 repaint();
             }
         });
@@ -151,6 +151,7 @@ public class UserInterface extends JFrame {
         panel.add(joinButton);
         panel.add(resetButton);
         panel.add(saveButton);
+        panel.add(compositeButton);
         //panel.add(space);
     }
 
@@ -245,7 +246,7 @@ public class UserInterface extends JFrame {
         }
     }
 
-    private void createComposit() {
+    private void createComposite() {
         if (canvases == null || canvases.isEmpty()) {
             return;
         }
@@ -253,12 +254,14 @@ public class UserInterface extends JFrame {
         Canvas c = canvases.get(0);
 
         if (c.getCurves().size() > 1) {
-            ICurve first = c.getCurves().get(0).getCopy();
-            ICurve second = c.getCurves().get(1).getCopy();
-            ICurve composit = new Chain(first, second);
+            ICurve first = c.getCurves().get(0).clone();
+            ICurve second = c.getCurves().get(1).clone();
+            ICurve composite = new Chain(first, second);
+            ICurve movedComposite = new MoveTo(composite, new Point(-20.0, -20.0));
 
+            VisualCurve curve = new VisualCurve(movedComposite);
+            c.addCurve(curve);
 
-            second.setCurve(movedSecondCurve);
         }
     }
 

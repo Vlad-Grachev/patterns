@@ -37,7 +37,7 @@ public class Bezier extends ACurve {
     }
 
     @Override
-    public ICurve getCopy() {
+    public ICurve clone() {
         IPoint aCopy = new Point(a.getX(), a.getY());
         IPoint bCopy = new Point(b.getX(), b.getY());
         IPoint cCopy = new Point(c.getX(), c.getY());

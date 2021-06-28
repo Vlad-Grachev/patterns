@@ -5,5 +5,5 @@ public abstract class ACurve implements ICurve {
     public abstract IPoint getPoint(double t);
 
     @Override
-    public abstract ICurve getCopy();
+    public abstract ICurve clone();
 }
